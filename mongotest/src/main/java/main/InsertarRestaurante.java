@@ -43,7 +43,7 @@ public class InsertarRestaurante {
 
         // Insertar el objeto Restaurante en la colección de restaurantes
         collection.insertOne(nuevoRestaurante);
-
+        System.out.println("Restaurante insertado con id: "+nuevoRestaurante.getId().toString());
         // Cerrar la conexión
         mongoClient.close();
     }
