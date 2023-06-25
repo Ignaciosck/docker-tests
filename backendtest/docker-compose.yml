@@ -27,9 +27,10 @@ services:
       MYSQL_ROOT_PASSWORD: root  # Contraseña de root para MySQL
       
   # Configuración del contenedor de Express
-  express:
+  backend:
     image: backend
-    container_name: express
+    container_name: backend
+    restart: always
     ports:
       - 4000:4000              # Mapeo de puertos (puerto_host:puerto_contenedor)
     working_dir: /app
