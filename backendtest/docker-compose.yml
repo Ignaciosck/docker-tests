@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Configuración del contenedor de MySQL
+  mysql:
+    image: mysql:latest
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Contraseña de root para MySQL
+      MYSQL_DATABASE: test      # Nombre de la base de datos
+      MYSQL_USER: admin         # Nombre de usuario de MySQL
+      MYSQL_PASSWORD: root      # Contraseña del usuario de MySQL
+    ports:
+      - "3306:3306"             # Mapeo de puertos (puerto_host:puerto_contenedor)
+    volumes:
+      - ../database:/var/lib/mysql  # Volumen para persistencia de datos de la base de datos
+      
+  # Configuración del contenedor de PhpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8082:80"              # Mapeo de puertos (puerto_host:puerto_contenedor)
+    environment:
+      PMA_HOST: mysql          # Host de la base de datos MySQL a la que se conecta PhpMyAdmin
+      MYSQL_ROOT_PASSWORD: root  # Contraseña de root para MySQL
+      
+  # Configuración del contenedor de Express
+  express:
+    image: backend
+    container_name: express
+    ports:
+      - 4000:4000              # Mapeo de puertos (puerto_host:puerto_contenedor)
+    working_dir: /app
+    command: sh -c "npm install && npm start"  # Comando a ejecutar dentro del contenedor
