@@ -10,12 +10,13 @@ El proyecto mysqltest contiene clases para probar operaciones CRUD utilizando Ja
 
 ## Requisitos
 
-Asegúrate de tener instalados los siguientes componentes antes de ejecutar el proyecto:
+Asegúrate de tener instalada la aplicación Docker Desktop antes de levantar los contenedores de los proyectos.
 
+
+O en su defecto, instalar:
 - Docker
 - Docker Compose
 
-O en su defecto, Docker Desktop.
 
 ## Estructura del repositorio
 
@@ -25,9 +26,10 @@ El repositorio está organizado de la siguiente manera:
   - `Dockerfile`: Archivo Dockerfile utilizado para construir la imagen Docker del proyecto.
   - `docker-compose.yml`: Archivo de Docker Compose para lanzar el proyecto junto con los servicios MySQL, PhpMyAdmin y el servicio de Node para ejecutar la imagen.
   - `backend.zip`: Imagen a importar que la API Rest.
-Importar la imagen con el comando:
+
+Importar la imagen backend.zip con el comando:
 ```bash
-docker load -i backend
+docker load -i backend.zip
 ```
 
 ### Proyecto mongotest 
@@ -35,7 +37,7 @@ docker load -i backend
 - `docker-compose.yml`: Archivo de Docker Compose para lanzar el proyecto junto con los servicios MongoDB y Mongo Express.
 
 ### Proyecto mysqltest
-- `mysqltest/`: Directorio del proyecto de prueba de operaciones CRUD en MySQL utilizando Java.
+- `Proyecto Java mysqltest/`: Directorio del proyecto de prueba de operaciones CRUD en MySQL utilizando Java.
 - `docker-compose.yml`: Archivo de Docker Compose para lanzar el proyecto junto con los servicios de MySQL y PhpMyAdmin.
 ## Configuración y ejecución
 
@@ -47,14 +49,6 @@ Sigue los pasos a continuación para configurar y ejecutar el proyecto Backend T
 ```bash
 docker compose up -d
 ```
-
-3. Construye la imagen Docker del proyecto utilizando el siguiente comando:
-```bash
-docker build -t backendtest .
-```
-
-
-5. Una vez que los contenedores estén en ejecución, podrás acceder a la API Rest a través de `http://localhost:4000` y a PhpMyAdmin en `http://localhost:8080`. Además, para el proyecto de prueba de MongoDB, podrás acceder a Mongo Express en `http://localhost:8081`.
 
 ## Pruebas de Postman
 
